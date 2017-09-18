@@ -1,0 +1,16 @@
+<div class="blog-masthead" xmlns:th="http://www.thymeleaf.org">
+  <div class="container">
+    <nav class="blog-nav">
+      <a id="Home" class="blog-nav-item active" href=".">Home</a>
+      <a id="Owasp" class="blog-nav-item" href="link.php?mode=file&amp;target=owasp.txt">Owasp Top Ten</a>
+      <a id="Gallery" class="blog-nav-item" href="link.php?mode=dir&amp;target=avatar">Gallery</a>
+      <a id="About" class="blog-nav-item" href="#">About</a>
+
+      <a th:if="${session.username}" class="blog-nav-item blog-nav-item-right" href="logout.php">Logout</a>
+
+      <a th:unless="${session.username}" class="blog-nav-item blog-nav-item-right" href="signup.php">Signup</a>
+      <a th:unless="${session.username}" class="blog-nav-item blog-nav-item-right" href="login.php">Login</a>
+
+    </nav>
+  </div>
+</div>

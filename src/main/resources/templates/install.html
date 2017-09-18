@@ -1,0 +1,24 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="page">
+
+<body>
+<th:block layout:fragment="content">
+  <div th:unless="${install}">
+    Click <a th:href='@{install.php(install=yes)}'>here</a> to install/reset
+  </div>
+  <table th:if="${install}">
+    <tr><th>Items</th><th th:text="${install}">Result</th></tr>
+    <tr><td><div class="bg-success">Recreating Database </div></td><td th:text="${CreateDB}?: _">KO</td></tr>
+    <tr><td><div class="bg-success">Deleting tables </div></td><td th:text="${DropTables}?: _">KO</td></tr>
+    <tr><td><div class="bg-success">Creating table user </div></td><td th:text="${CreateUser}?: _">KO</td></tr>
+    <tr><td><div class="bg-success">Creating table article </div></td><td th:text="${CreateArticle}?: _">KO</td></tr>
+    <tr><td><div class="bg-success">Creating table comment </div></td><td th:text="${CreateComment}?: _">KO</td></tr>
+
+    <tr><td><div class="bg-success">User Alice </div></td><td th:text="${Alice}?: _">KO</td></tr>
+    <tr><td><div class="bg-success">User Bob </div></td><td th:text="${Bob}?: _">KO</td></tr>
+    <tr><td><div class="bg-success">User Eve </div></td><td th:text="${Eve}?: _">KO</td></tr>
+  </table>
+</th:block>
+</body>
+</html>

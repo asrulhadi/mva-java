@@ -1,0 +1,36 @@
+<div class="page-header" xmlns:th="http://www.thymeleaf.org">
+  <div class="sidebar-module" th:if="${session.username}" >
+    <h4>Welcome <span th:utext="${session.username}">USERNAME</span></h4>
+    <img th:src="@{|/avatar/${session.avatar}|}" height='75' width='75' />
+    <ol class="list-unstyled">
+      <li><a href="post.php">Post Article</a></li>
+    </ol>
+  </div>
+
+  <div class="sidebar-module sidebar-module-inset" th:unless="${session.username}">
+    <h4>About</h4>
+    <p>
+      <div>Vulnerable Web Application</div>
+      <em>Do not host publicly</em>
+      <div class="warning">You have been warned!!!</div>
+    </p>
+  </div>
+
+  <div class="sidebar-module" th:if="${session.admin}">
+    <h4>Admin Modules</h4>
+    <ol class="list-unstyled">
+      <li><a href="install.php?install=yes">Reset Database</a></li>
+      <li><a href="admin.php">Manage Users</a></li>
+      <li><a href="admin.php">Manage Articles</a></li>
+    </ol>
+  </div>
+
+  <div class="sidebar-module">
+    <h4>Elsewhere</h4>
+    <ol class="list-unstyled">
+      <li><a href="https://github.com/asrulhadi/mva">GitHub</a></li>
+      <li><a href="http://php.net/manual/en/security.php">PHP Security</a></li>
+      <li><a href="http://htmlpurifier.org/">HTML Purifier</a></li>
+    </ol>
+  </div>
+</div>

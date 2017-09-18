@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <th:block layout:include="fragments/htmlhead" />
+</head>
+<body>
+  <th:block layout:replace="fragments/navigation" />
+  <div class="container">
+    <th:block layout:replace="fragments/blog-title" />
+    <div class="row">
+      <div class="col-sm-8 blog-main">
+        <th:block layout:fragment="content"/>
+      </div><!-- /blog-main -->
+      <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <th:block layout:replace="fragments/sidebar" />
+        <th:block layout:fragment="side" />
+      </div><!-- /blog-sidebar -->
+    </div><!-- /row -->
+  </div><!-- /container -->
+  <th:block layout:replace="fragments/footer :: end"/>
+  <script lang='script/javascript'>
+    <th:block layout:fragment="end_script"/>
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="page">
+
+<body>
+<th:block layout:fragment="content">
+  <div class="blog-post">
+    <h2 class="blog-post-title" th:utext="${title}">TITLE</h2>
+    <p class="blog-post-meta" th:text="${date_created}">DATE by <a href="#" th:text="${username}">USERNAME</a></p>
+    <th:block th:utext="${content}">ARTICLE</th:block>
+    <hr />
+    <div class="list-group">
+    <div class="list-group-item-heading">Comments</div>
+      <div class="list-group-item" th:each="comment : ${comments}">
+        <div th:text="${comment.comment}">COMMENT
+        <div class="blog-comment" th:text="${#comment->get_date_created()}">DATE</div></div>
+      </div>
+    </div>
+    <a th:href="@{comment.php(article_id=${id})}" class="btn btn-info">Make a Comment</a>
+  </div><!-- /blog-post -->
+</th:block>
+</body>
+</html>

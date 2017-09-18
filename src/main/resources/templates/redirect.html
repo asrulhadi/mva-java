@@ -1,0 +1,29 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="page">
+
+<body>
+<th:block layout:fragment="content">
+
+<div class="alert alert-info" th:if="${info}" th:text="${info}">INFO</div>
+  <div class="alert alert-success" th:if="${msg}" th:utext="${msg}">INFO>{$msg}</div>
+<div class="alert alert-info">
+  You will be redirected to <a href="/">HOME</a> in <span id='countdown'>5</span>s
+</div>
+</th:block>
+<th:block layout:fragment="end_script" th:inline="javascript">
+countdown = 5;
+function redirect() {
+  if ( countdown === 0 ) {
+    window.location = "/";
+  } else {
+    countdown = countdown - 1;
+    document.getElementById('countdown').innerHTML = countdown;
+    setTimeout('redirect()',1000);
+  }
+}
+setTimeout('redirect()',1000);
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="page">
+
+<body>
+<th:block layout:fragment="content">
+  <div class="bg-primary" th:utext="${keyword}">Searching for: KEYWORD</div>
+  {$pattern = "/$keyword/i"}
+  {$replace = "<mark>$keyword</mark>"}
+  <div class="alert alert-warning" th:unless="${found}">No result found</div>
+    {$article_id = $article->get_id()}
+    {$title = $article->get_title()}
+    <div class="blog-post" th:each="article : ${articles}">
+      <h2 class="blog-post-title"><a th:href="@{article.php(id={$article_id})">{$title|regex_replace:$pattern:$replace}</a></h2>
+      <p class="blog-post-meta">{$article->get_date_created()} by <a href="#">{$article->get_username()}</a></p>
+      {$article->get_content()|regex_replace:$pattern:$replace}
+      <hr />
+    </div><!-- /.blog-post -->
+
+</th:block>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="page">
+
+<body>
+<th:block layout:fragment="content">
+  Comment for article <h2 th:utext="${title}">Article Title</h2>
+
+  <form name="comment" method="post" action="comment.php">
+    <div class="form-group">
+      <label>Comment</label>
+      <textarea class="form-control" name="comment" rows="5"></textarea>
+    </div>
+    <input type="hidden" name="article_id" th:value="${article_id}" />
+    <button type="submit" name="submit" value="submit">Submit</button>
+  </form>
+</th:block>
+</body>
+</html>
